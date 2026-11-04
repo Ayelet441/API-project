@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API_hm_3
+namespace Entities
 {
     public class LoginUser
     {

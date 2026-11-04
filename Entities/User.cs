@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API_hm_3
+namespace Entities
 {
-    public class RegisterUser
+    public class User
     {
         public int UserId { get; set; }
         [EmailAddress]

@@ -16,7 +16,7 @@ const Update = async () => {
         fname: fname.value,
         lname: lname.value
     }
-    const responsePut = await fetch(`api/login/${curUser.userId}`, {
+    const responsePut = await fetch(`api/Users/${curUser.userId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

@@ -10,7 +10,7 @@
         lname: userlname
     }
 
-    const ResponsePost = await fetch("api/login", {
+    const ResponsePost = await fetch("api/Users", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ const log = async () => {
         password: loginpassword,
     }
 
-    const ResponsePost = await fetch("api/login/login", {
+    const ResponsePost = await fetch("api/Users/login", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -42,10 +42,22 @@ const log = async () => {
     });
     const DataPost = await ResponsePost.json();
     if (ResponsePost.ok) {
-        alert("התחברת בהצלחה");
-        update.style.display = "Block";
+        window.location.href = "Update.html"
         sessionStorage.setItem("CurrentUser", JSON.stringify(DataPost));
     }
     else
         alert(ResponsePost.status)
+}
+
+const checkpass = async () => {
+    const password = document.getElementById("password").value;
+    const progress = document.getElementById("progress");
+    const ResponsePost = await fetch("api/password", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(password)
+    });
+    progress.value = await ResponsePost.text();
 }
