@@ -3,7 +3,7 @@ using Entities;
 
 namespace Repository
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         string filePath = "../API_hm_3/Users.txt";
 
@@ -22,7 +22,7 @@ namespace Repository
             return null;
         }
 
-        public User AddUser( User user)
+        public User AddUser(User user)
         {
             int numberOfUsers = System.IO.File.ReadLines(filePath).Count();
             user.UserId = numberOfUsers + 1;

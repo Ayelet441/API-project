@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
   <Project Path="API_hm_3/API_hm_3.csproj" />
   <Project Path="Entities/Entities.csproj" Id="f9c1f6da-9d97-4f11-9201-1c6312a4f3d1" />
   <Project Path="Repository/Repository.csproj" Id="03f67703-ed5c-4aec-8720-d67e4aeb278b" />

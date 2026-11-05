@@ -4,9 +4,14 @@ using Entities;
 
 namespace Service
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        UserRepository repository = new UserRepository();
+        private IUserRepository repository;
+
+        public UserService(IUserRepository userRepository)
+        {
+            this.repository = userRepository;
+        }
 
         public User GetUserById(int id)
         {
