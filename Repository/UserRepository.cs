@@ -39,6 +39,7 @@ namespace Repository
                 while ((currentUserInFile = reader.ReadLine()) != null)
                 {
                     User user = JsonSerializer.Deserialize<User>(currentUserInFile);
+                    //Lines 1 and 2 of Users.txt use lowercase keys (userId, mail). System.Text.Json is case-sensitive by default: why are they written differently from the other lines? Tip: JsonSerializerOptions { PropertyNameCaseInsensitive = true }
                     if (user.Mail == loginUser.Email && user.Password == loginUser.Password)
                         return user;
                 }

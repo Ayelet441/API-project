@@ -33,12 +33,14 @@ namespace API_hm_3.Controllers
         {
             User user = userService.GetUserById(id);
             if (user != null)
-                return CreatedAtAction(nameof(Get), user);
+                //fix: GET by id returned 201 Created; it should return 200 Ok with the user
+                return Ok(user);
             return NotFound();
         }
 
         // POST api/<LoginController>
         [HttpPost]
+        //In C#, parameters are camelCase: user instead of User
         public IActionResult Post([FromBody] User User)
         {
             return CreatedAtAction(nameof(Get), userService.AddUser(User));
@@ -56,6 +58,7 @@ namespace API_hm_3.Controllers
 
         // PUT api/<LoginController>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): check that the user is updated in the file before returning
         public ActionResult<User> Put(int id, [FromBody] User userToUpdate)
         {
             return CreatedAtAction(nameof(Get), userService.UpdateUser(id, userToUpdate));
