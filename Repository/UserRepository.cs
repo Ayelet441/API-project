@@ -39,6 +39,7 @@ namespace Repository
                 while ((currentUserInFile = reader.ReadLine()) != null)
                 {
                     User user = JsonSerializer.Deserialize<User>(currentUserInFile);
+                    //Question: the login fails for every user: which stored field should equal the Email sent by the client, and do the stored lines use the same property names?
                     if (user.Mail == loginUser.Email && user.Password == loginUser.Password)
                         return user;
                 }

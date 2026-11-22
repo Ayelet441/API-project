@@ -9,6 +9,7 @@ email.textContent = `mail: ${curUser.mail}`
 password.value = curUser.password
 fname.value = curUser.fname
 lname.value = curUser.lname
+//In JavaScript, function names are camelCase: update
 const Update = async () => {
     const updateData = {
         mail: curUser.mail,
