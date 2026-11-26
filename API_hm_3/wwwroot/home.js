@@ -4,10 +4,10 @@
     const userfname = document.getElementById("fname").value;
     const userlname = document.getElementById("lname").value;
     const PostData = {
-        mail: usermail, 
-        password: userpassword,
-        fname: userfname,
-        lname: userlname
+        Email: usermail, 
+        Password: userpassword,
+        FirstName: userfname,
+        LastName: userlname
     }
 
     const ResponsePost = await fetch("api/Users", {
@@ -30,7 +30,7 @@ const log = async () => {
     const update = document.getElementById("Update");
     const PostData = {
         Email: mail,
-        password: loginpassword,
+        Password: loginpassword,
     }
 
     const ResponsePost = await fetch("api/Users/login", {

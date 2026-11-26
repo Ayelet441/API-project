@@ -5,8 +5,8 @@ namespace Service
     public interface IUserService
     {
         User AddUser(User User);
-        User GetUserById(int id);
-        User Login(LoginUser loginUser);
-        User UpdateUser(int id, User userToUpdate);
+        Task<User> GetUserById(int id);
+        Task<User> Login(LoginUser loginUser);
+        Task<User> UpdateUser(int id, User userToUpdate);
     }
 }

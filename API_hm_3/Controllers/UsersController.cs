@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi;
 using Service;
 using System.Reflection.PortableExecutable;
 using System.Text.Json;
@@ -29,11 +28,11 @@ namespace API_hm_3.Controllers
 
         // GET api/<LoginController>/5
         [HttpGet("{id}")]
-        public ActionResult<User> Get(int id)
+        public async Task<ActionResult<User>> Get(int id)
         {
-            User user = userService.GetUserById(id);
+            User user = await userService.GetUserById(id);
             if (user != null)
-                return CreatedAtAction(nameof(Get), user);
+                return Ok();
             return NotFound();
         }
 
@@ -46,9 +45,9 @@ namespace API_hm_3.Controllers
 
         // POST api/<LoginController>
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginUser loginUser)
+        public async Task<IActionResult> Login([FromBody] LoginUser loginUser)
         {
-            User user = userService.Login(loginUser);
+            User user = await userService.Login(loginUser);
             if(user != null)
                 return CreatedAtAction(nameof(Get), user);
             return NotFound("שם משתמש או סיסמא אינם נכונים");
@@ -56,9 +55,10 @@ namespace API_hm_3.Controllers
 
         // PUT api/<LoginController>/5
         [HttpPut("{id}")]
-        public ActionResult<User> Put(int id, [FromBody] User userToUpdate)
+        public async Task<ActionResult<User>> Put(int id, [FromBody] User userToUpdate)
         {
-            return CreatedAtAction(nameof(Get), userService.UpdateUser(id, userToUpdate));
+            await userService.UpdateUser(id, userToUpdate);
+            return Ok();
         }
 
         // DELETE api/<LoginController>/5

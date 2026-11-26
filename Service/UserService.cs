@@ -13,9 +13,9 @@ namespace Service
             this.repository = userRepository;
         }
 
-        public User GetUserById(int id)
+        public async Task<User> GetUserById(int id)
         {
-            return repository.GetUserById(id);
+            return await repository.GetUserById(id);
         }
 
         public User AddUser(User User)
@@ -23,14 +23,14 @@ namespace Service
             return repository.AddUser(User);
         }
 
-        public User Login(LoginUser loginUser)
+        public async Task<User> Login(LoginUser loginUser)
         {
-            return repository.Login(loginUser);
+            return await repository.Login(loginUser);
         }
 
-        public User UpdateUser(int id, User userToUpdate)
+        public async Task<User> UpdateUser(int id, User userToUpdate)
         {
-            return repository.UpdateUser(id, userToUpdate);
+            return await repository.UpdateUser(id, userToUpdate);
         }
     }
 }

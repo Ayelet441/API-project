@@ -4,17 +4,18 @@ const password = document.getElementById("password");
 const fname = document.getElementById("fname");
 const lname = document.getElementById("lname");
 let curUser = JSON.parse(sessionStorage.getItem("CurrentUser"))
-title.textContent = `hello ${curUser.fname}`
-email.textContent = `mail: ${curUser.mail}`
+title.textContent = `hello ${curUser.firstName}`
+email.textContent = `mail: ${curUser.email}`
 password.value = curUser.password
-fname.value = curUser.fname
-lname.value = curUser.lname
+fname.value = curUser.firstName
+lname.value = curUser.lastName
 const Update = async () => {
     const updateData = {
-        mail: curUser.mail,
-        password: password.value,
-        fname: fname.value,
-        lname: lname.value
+        Email: curUser.email,
+        Password: password.value,
+        FirstName: fname.value,
+        LastName: lname.value,
+        UserId: curUser.userId
     }
     const responsePut = await fetch(`api/Users/${curUser.userId}`, {
         method: 'PUT',
